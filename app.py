@@ -31,9 +31,16 @@ def load_models():
         "Random Forest": MODELS_DIR / "random_forest.pkl",
         "LightGBM": MODELS_DIR / "lightgbm.pkl",
     }
+
     for name, path in model_files.items():
         if path.exists():
-            models[name] = joblib.load(path)
+            try:
+                models[name] = joblib.load(path)
+            except Exception as e:
+                st.warning(f"Could not load {name}: {e}")
+        else:
+            st.warning(f"Missing model file: {path.name}")
+
     return models
 
 def infer_feature_columns(df: pd.DataFrame):
