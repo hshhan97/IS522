@@ -101,15 +101,14 @@ def show_artifact_image(filename, caption):
 
 def show_shap_waterfall(model_name, model, background_X, input_df):
         try:
-        background = background_X.sample(min(200, len(background_X)), random_state=42)
-        explainer = shap.Explainer(model, background)
-        shap_values = explainer(input_df)
-
-        fig = plt.figure(figsize=(10, 5))
-        shap.plots.waterfall(shap_values[0], max_display=12, show=False)
-        st.pyplot(fig, clear_figure=True)
-    except Exception as e:
-        st.info(f"Could not generate SHAP waterfall for {model_name}: {e}")
+            background = background_X.sample(min(200, len(background_X)), random_state=42)
+            explainer = shap.Explainer(model, background)
+            shap_values = explainer(input_df)
+            fig = plt.figure(figsize=(10, 5))
+            shap.plots.waterfall(shap_values[0], max_display=12, show=False)
+            st.pyplot(fig, clear_figure=True)
+        except Exception as e:
+            st.info(f"Could not generate SHAP waterfall for {model_name}: {e}")
 
 df = load_data()
 models = load_models()
