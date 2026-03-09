@@ -100,8 +100,7 @@ def show_artifact_image(filename, caption):
         st.info(f"{filename} not found in artifacts/.")
 
 def show_shap_waterfall(model_name, model, background_X, input_df):
-    st.subheader("Local Explainability (SHAP Waterfall)")
-    try:
+        try:
         background = background_X.sample(min(200, len(background_X)), random_state=42)
         explainer = shap.Explainer(model, background)
         shap_values = explainer(input_df)
