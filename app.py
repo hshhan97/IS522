@@ -209,8 +209,7 @@ with tab4:
 
     st.markdown("### Input Summary")
     st.dataframe(input_df, use_container_width=True)
-
-    st.markdown("### SHAP Explainability")
-    st.markdown("### SHAP Explainability")
-    show_shap_waterfall(model_name, model, df[feature_cols], input_df)
+    
+    st.markdown("### Model Explainability")
+    st.markdown("#### SHAP Local Explanation (Waterfall Plot)")
     show_shap_waterfall(model_name, model, df[feature_cols], input_df)
