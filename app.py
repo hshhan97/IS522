@@ -204,6 +204,6 @@ with tab4:
     st.dataframe(input_df, use_container_width=True)
 
     st.markdown("### SHAP Explainability")
-    show_artifact_image("shap_summary.png", "SHAP summary plot")
-    show_artifact_image("shap_bar.png", "SHAP feature importance bar plot")
+    st.markdown("### SHAP Explainability")
+    show_shap_waterfall(model_name, model, df[feature_cols], input_df)
     show_shap_waterfall(model_name, model, df[feature_cols], input_df)
